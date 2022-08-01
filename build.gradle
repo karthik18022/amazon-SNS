@@ -1,0 +1,26 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+}
+
+group = 'com.vital'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'com.amazonaws', name: 'aws-java-sdk-sqs', version: '1.12.270'
+	implementation group: 'com.amazonaws', name: 'aws-java-sdk-sns', version: '1.12.270'
+	implementation group: 'software.amazon.awssdk', name: 'aws-core', version: '2.17.241'
+	
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
