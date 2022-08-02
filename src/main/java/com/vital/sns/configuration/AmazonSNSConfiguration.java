@@ -20,7 +20,7 @@ public class AmazonSNSConfiguration {
 				.withRegion(Regions.US_EAST_1)
 				.withCredentials(
 						new AWSStaticCredentialsProvider(
-								new BasicAWSCredentials("AKIATSZ5F2LXD4RHG7VR","Qg5MIx+3lbiao6P9zbIDLuUiPlbBuhBxGOZjqFIl")) 
+								new BasicAWSCredentials("","")) 
 						).build();
 	}
 }

@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.amazonaws.services.sns.AmazonSNSClient;
+import com.amazonaws.services.sns.model.ListPlatformApplicationsResult;
 import com.amazonaws.services.sns.model.ListSubscriptionsByTopicResult;
 import com.amazonaws.services.sns.model.ListTopicsResult;
+import com.amazonaws.services.sns.model.PlatformApplication;
 import com.amazonaws.services.sns.model.PublishRequest;
 import com.amazonaws.services.sns.model.SubscribeRequest;
 import com.amazonaws.services.sns.model.Subscription;
@@ -21,7 +23,7 @@ import com.amazonaws.services.sns.model.UnsubscribeRequest;
 @RestController
 public class AmazonSNScontroller {
 
-	private static final String TOPIC_ARN = "arn:aws:sns:us-east-1:246552056558:awssns";
+	private static final String TOPIC_ARN = "";
 	private static final String EMAIL = "email";
 
 	@Autowired
@@ -65,4 +67,13 @@ public class AmazonSNScontroller {
 		}
 		return topicArns;
 	}
+
+	@GetMapping("/topicArns/platform")
+	public List<PlatformApplication> listAllPlatformApplication() {
+		List<PlatformApplication> topicArns = new ArrayList<>();
+		ListPlatformApplicationsResult result = this.amazonSNSClient.listPlatformApplications();
+		topicArns.addAll(result.getPlatformApplications());
+		return topicArns;
+	}
+
 }
